@@ -14,7 +14,7 @@ class App extends Component {
      <>
      <GlobalStyle />
      <Provider store={store}>
-      <BrowserRouter>
+      <BrowserRouter  basename={ process.env.PUBLIC_URL }>
         <Header />
         <Route path='/' exact component={home}></Route>
         <Route path='/scenicSpot' exact component={scenicSpot}></Route>
