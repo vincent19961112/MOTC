@@ -1,6 +1,7 @@
 # MOTC觀光景觀 React App
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+這App是使用觀光局的API所製作的
+[觀光局API](https://ptx.transportdata.tw/MOTC)
 
 ## 使用套件
 
