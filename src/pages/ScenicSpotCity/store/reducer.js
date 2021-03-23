@@ -1,5 +1,6 @@
 import { fromJS } from 'immutable';
 import * as ActionTypes from './ActionTypes';
+
 const defaultState = fromJS({
    City:[
       { CityName:'臺北市', CityNameEN:'Taipei', Citylist:[], hasMore: true, loading: false },

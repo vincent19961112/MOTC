@@ -1,4 +1,5 @@
 import styled from 'styled-components';
+import { Link } from 'react-router-dom';
 
 export const Loading = styled.div`
  padding: 20px;
@@ -6,6 +7,10 @@ export const Loading = styled.div`
  font-size: 40px;
  line-height:40px;
  height:250px;
+`
+export const LinkWrapper = styled(Link)`
+  text-decoration: none;
+  color:#777
 `
 
 export const SpotListCard = styled.div`

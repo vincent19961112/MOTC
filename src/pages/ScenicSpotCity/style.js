@@ -9,6 +9,11 @@ export const Loading = styled.div`
  height:250px;
 `
 
+export const LinkWrapper = styled(Link)`
+  text-decoration: none;
+  color:#777
+`
+
 export const SpotListCard = styled.div`
  cursor: pointer;
  min-height: 200px;

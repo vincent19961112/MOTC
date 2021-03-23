@@ -1,7 +1,7 @@
 import React, { useRef, useCallback } from 'react';
 import { connect } from 'react-redux';
 import { ActionCreators } from '../store';
-import { SpotListCard, CardTitle, SpotContent, CardSubTitle, Loading } from '../style';
+import { SpotListCard, CardTitle, SpotContent, CardSubTitle, Loading, LinkWrapper } from '../style';
 
 function SpotList(props) {
 
@@ -19,7 +19,7 @@ function SpotList(props) {
       }
     })
     if(node) observer.current.observe(node)
-  }) 
+  },[hasMore, loading, handleloading, handlehasMoreList, list]) 
 
    if(list.length === 0 && !loading){
     return <Loading>Loading...</Loading>
@@ -30,21 +30,25 @@ function SpotList(props) {
         const Picture = item.Picture
         if(list.length === index + 1){
             return (
-            <SpotListCard index={index + 1} key={ID} ref={lastElementRef}>
-              <CardTitle>{Name}</CardTitle>
-              <CardSubTitle>{Address}</CardSubTitle>
-              <SpotContent>{Description ? Description : '沒有簡介'}</SpotContent>
-              <img className='SpotListImg' alt={Picture.PictureDescription1} src={Picture.PictureUrl1 ? Picture.PictureUrl1 : '沒有圖片'}/>
-            </SpotListCard>
+              <LinkWrapper key={ID} to={`scenicSpot/scenicSpotDetail/${ID}`}>
+                <SpotListCard index={index + 1} ref={lastElementRef}>
+                  <CardTitle>{Name}</CardTitle>
+                  <CardSubTitle>{Address}</CardSubTitle>
+                  <SpotContent>{Description ? Description : '沒有簡介'}</SpotContent>
+                  <img className='SpotListImg' alt={Picture.PictureDescription1} src={Picture.PictureUrl1 ? Picture.PictureUrl1 : '沒有圖片'}/>
+                </SpotListCard>
+              </LinkWrapper>
           )
         } else{
             return (
-            <SpotListCard index={index + 1} key={ID}>
-              <CardTitle>{Name}</CardTitle>
-              <CardSubTitle>{Address}</CardSubTitle>
-              <SpotContent>{Description ? Description : '沒有簡介'}</SpotContent>
-              <img className='SpotListImg' alt={Picture.PictureDescription1} src={Picture.PictureUrl1 ? Picture.PictureUrl1 : '沒有圖片'}/>
-            </SpotListCard>
+                <LinkWrapper key={ID} to={`scenicSpot/scenicSpotDetail/${ID}`}>
+                <SpotListCard index={index + 1}>
+                  <CardTitle>{Name}</CardTitle>
+                  <CardSubTitle>{Address}</CardSubTitle>
+                  <SpotContent>{Description ? Description : '沒有簡介'}</SpotContent>
+                  <img className='SpotListImg' alt={Picture.PictureDescription1} src={Picture.PictureUrl1 ? Picture.PictureUrl1 : '沒有圖片'}/>
+                </SpotListCard>
+              </LinkWrapper>
           )
         }
       })

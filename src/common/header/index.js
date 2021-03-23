@@ -17,8 +17,11 @@ function Header(props) {
         onClick={()=>handleSpotList(list)}
         >全部</NavLink>
         <NavLink 
-        to={`/scenicSpot/${'臺北市'}`}
+        to={`/scenicSpot/city/${'臺北市'}`}
         >縣市</NavLink>
+        <NavLink 
+        to={`/scenicSpot/ScenicSpotMap`}
+        >地圖</NavLink>
     </HeaderNavbar>
   </HeaderWrapper>
   )

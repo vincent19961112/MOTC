@@ -5,7 +5,7 @@ import { Navbar, NavItem } from '../style';
 
 
 function CityNavbar (props){
-  const { City, getSpotCityList } = props;
+  const { City, handleSpotCityList } = props;
   const list = City.toJS();
 
   return (
@@ -14,9 +14,9 @@ function CityNavbar (props){
         const { CityName, CityNameEN, Citylist } = item
       return (
         <NavItem
-         to={`/scenicSpot/${CityName}`}
+         to={`/scenicSpot/city/${CityName}`}
          key={CityNameEN}
-         onClick={()=>{getSpotCityList(CityNameEN, index, Citylist)}}
+         onClick={()=>{handleSpotCityList(CityNameEN, index, Citylist)}}
          >       
           {(item.CityName)}
         </NavItem>
@@ -34,7 +34,7 @@ const mapState = (state) => {
 
 const mapDispatch = (dispatch) => {
  return {
-  getSpotCityList(city, index, list){
+  handleSpotCityList(city, index, list){
    dispatch(ActionCreators.getSpotCityList(city, index, list))
   } 
  }

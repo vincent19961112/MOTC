@@ -50,3 +50,4 @@ export const getMoreSpotList = (prevState, hasMore, index, loading) =>{
     }
   }
 }
+
