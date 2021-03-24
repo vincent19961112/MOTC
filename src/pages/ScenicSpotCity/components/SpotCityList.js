@@ -53,7 +53,7 @@ function SpotCityList(props){
             const Picture = item.Picture
             if(items.Citylist.length === index + 1){
               return (
-                 <LinkWrapper key={ID} to={`${cityCN}/scenicSpotDetail/${ID}`}>
+                 <LinkWrapper key={ID} to={`city/${cityCN}/scenicSpotDetail/${ID}`}>
                   <SpotListCard index={index + 1} ref={lastElementRef}>
                     <CardTitle>{Name}</CardTitle>
                     <CardSubTitle>{Address}</CardSubTitle>

@@ -23,7 +23,7 @@ class App extends Component {
         <Route path='/scenicSpot/ScenicSpotMap' exact component={ScenicSpotMap}></Route>
         <Route path='/scenicSpot/city/:cityname' exact component={ScenicSpotCity}></Route>
         <Route path='/scenicSpot/scenicSpotDetail/:detailId' exact component={SpotDetail}></Route>
-        <Route path='/scenicSpot/:cityname/scenicSpotDetail/:detailId' exact component={SpotDetail}></Route>
+        <Route path='/scenicSpot/city/:cityname/scenicSpotDetail/:detailId' exact component={SpotDetail}></Route>
       </BrowserRouter>
      </Provider>
      </>
