@@ -1,14 +1,12 @@
 import * as ActionTypes from './ActionTypes';
 import axios from 'axios';
 
-const isNewCoordinates = (data) =>({
-  type: ActionTypes.IS_NEW_COORDINATES,
-  data
+const isNewCoordinates = () =>({
+  type: ActionTypes.IS_NEW_COORDINATES
 })
 
-const notNewCoordinates = (data) =>({
-  type: ActionTypes.NOT_NEW_COORDINATES,
-  data
+const notNewCoordinates = () =>({
+  type: ActionTypes.NOT_NEW_COORDINATES
 })
 
 const GetMapAllCoordinates = (store) =>({
@@ -76,11 +74,16 @@ export const fixZoomChange = (data) =>({
 })
 
 export const fixNewCoordinates = (prevlng, prevlat, lng, lat) =>{
- return (dispatch) =>{
-   if(prevlng !== lng || prevlat !== lat){
-    dispatch(isNewCoordinates(false))
-  }else{
-    dispatch(notNewCoordinates(true))
+  return (dispatch) =>{
+    if(prevlng !== lng || prevlat !== lat){
+      dispatch(isNewCoordinates(false))
+    }else{
+      dispatch(notNewCoordinates(true))
+    }
   }
- }
 }
+
+export const fixCurrentDetail = (data) =>({
+ type: ActionTypes.FIX_CURRENT_DETAIL,
+ data
+})

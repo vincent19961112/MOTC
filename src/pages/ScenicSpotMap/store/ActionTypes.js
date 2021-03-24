@@ -6,3 +6,4 @@ export const FIX_ZOOM_CHANGE = 'ScenicSpotMap/FIX_ZOOM_CHANGE';
 export const FIX_CITY_INDEX = 'ScenicSpotMap/FIX_CITY_INDEX';
 export const IS_NEW_COORDINATES = 'ScenicSpotMap/IS_NEW_COORDINATES';
 export const NOT_NEW_COORDINATES = 'ScenicSpotMap/NOT_NEW_COORDINATES';
+export const FIX_CURRENT_DETAIL = 'ScenicSpotMap/FIX_CURRENT_DETAIL';

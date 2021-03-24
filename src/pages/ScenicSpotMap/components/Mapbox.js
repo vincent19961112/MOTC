@@ -12,8 +12,10 @@ mapboxgl.accessToken = 'pk.eyJ1IjoidmluY2VudDE5OTYxMTEyIiwiYSI6ImNrbWJuOWJpZzFvM
 
 function SideNavbar(props) {
 
- const { lng, lat, zoom, isNewCoordinates, stores, handleGetAllCity } = props;
- 
+ const { lng, lat, zoom, isNewCoordinates, stores, currentDetail, handleGetAllCity } = props;
+
+ const detail = currentDetail.toJS();
+
  let mapContainer = useRef() 
 
  const Stores = stores.toJS();
@@ -56,14 +58,24 @@ function SideNavbar(props) {
     }
     );
   
-  if(!isNewCoordinates){
+  if(isNewCoordinates){
     flyToStore(map, lng, lat)
+
+  const popup = new mapboxgl.Popup()
+  popup.setLngLat({lng, lat}).setHTML(`
+    <div class="mapCard">
+    <div class="mapCardTitle">${detail.Name}</div>
+    <div class="mapCardAddress">${detail.Address}</div>
+    <button class="mapCardBtn">閱讀詳情</button>
+    </div>
+  `).addTo(map);
   }
 
   });
 
   map.on('click', 'points', function (e) {
-    CreatorPopup(map, e)
+    flyToStore(map, e.lngLat.lng, e.lngLat.lat)
+    CreatePopup(map, e)
   });
   
   map.on('mouseenter', 'points', function () {
@@ -85,7 +97,7 @@ function SideNavbar(props) {
     });
   }
 
-  function CreatorPopup(map, e){
+  function CreatePopup(map, e){
     
   let coordinates = e.features[0].geometry.coordinates;
   let name = e.features[0].properties.name;
@@ -120,7 +132,8 @@ const mapState = (state) =>{
   lat: state.getIn(['SpotMap','lat']),
   zoom: state.getIn(['SpotMap','zoom']),
   stores: state.getIn(['SpotMap','stores']),
-  isNewCoordinates: state.getIn(['SpotMap','isNewCoordinates'])
+  isNewCoordinates: state.getIn(['SpotMap','isNewCoordinates']),
+  currentDetail: state.getIn(['SpotMap','currentDetail'])
  }
 }
 

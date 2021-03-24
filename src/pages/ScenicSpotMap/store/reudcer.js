@@ -7,7 +7,8 @@ const defaultState = fromJS({
  zoom: 9,
  isNewCoordinates: false,
  cityIndex: undefined,
- stores : {}
+ stores : {},
+ currentDetail:[]
 })
 
 const reducer = (state=defaultState, action) =>{
@@ -25,9 +26,11 @@ const reducer = (state=defaultState, action) =>{
   case ActionTypes.FIX_CITY_INDEX:
    return state.set('cityIndex', action.data)
   case ActionTypes.IS_NEW_COORDINATES:
-   return state.set('isNewCoordinates', action.data)
+   return state.set('isNewCoordinates', true)
   case ActionTypes.NOT_NEW_COORDINATES:
-   return state.set('isNewCoordinates', action.data)
+   return state.set('isNewCoordinates', false)
+  case ActionTypes.FIX_CURRENT_DETAIL:
+   return state.set('currentDetail', fromJS(action.data))
   default:
    return state
  }
